@@ -1,0 +1,6 @@
+{
+  "name": "Cedarstone Hospital - Nairobi, Kenya",
+  "description": "Official static website and patient portal for Cedarstone Hospital in Nairobi, Kenya. Built with the Cedarstone design system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
