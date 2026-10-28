@@ -11,6 +11,7 @@ import { DoctorDirectory } from './components/DoctorDirectory';
 import { TelehealthSection } from './components/TelehealthSection';
 import { PatientVisitorGuide } from './components/PatientVisitorGuide';
 import { InsuranceSection } from './components/InsuranceSection';
+import { CareersPortal } from './components/CareersPortal';
 import { PatientPortalDemo } from './components/PatientPortalDemo';
 import { AppointmentModal } from './components/AppointmentModal';
 import { Footer } from './components/Footer';
@@ -50,14 +51,34 @@ export default function App() {
   };
 
   const handleNavigate = (sectionId: string) => {
-    setCurrentSection(sectionId);
-    if (sectionId === 'home') {
+    if (sectionId === 'careers') {
+      setCurrentSection('careers');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      return;
+    }
+
+    if (sectionId === 'home') {
+      setCurrentSection('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // If on careers and clicking a home section (services, insurance, portal, etc.)
+    if (currentSection === 'careers') {
+      setCurrentSection('home');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 80);
+      return;
+    }
+
+    setCurrentSection(sectionId);
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -121,71 +142,77 @@ export default function App() {
       />
 
       <main className="flex-1">
-        {/* Hero Section with mandated --hero gradient */}
-        <Hero
-          onOpenBooking={handleOpenGeneralBooking}
-          onNavigateToDoctors={() => handleNavigate('doctors')}
-          onNavigateToServices={() => handleNavigate('services')}
-          onQuickSearch={handleQuickSearch}
-        />
+        {currentSection === 'careers' ? (
+          <CareersPortal />
+        ) : (
+          <>
+            {/* Hero Section with mandated --hero gradient */}
+            <Hero
+              onOpenBooking={handleOpenGeneralBooking}
+              onNavigateToDoctors={() => handleNavigate('doctors')}
+              onNavigateToServices={() => handleNavigate('services')}
+              onQuickSearch={handleQuickSearch}
+            />
 
-        {/* Clinical Services & Department Centres of Excellence */}
-        <DepartmentGrid
-          onSelectDepartmentToBook={handleSelectDepartmentToBook}
-        />
+            {/* Clinical Services & Department Centres of Excellence */}
+            <DepartmentGrid
+              onSelectDepartmentToBook={handleSelectDepartmentToBook}
+            />
 
-        {/* Doctor & Specialist Directory with Filter Tabs & Cards */}
-        <DoctorDirectory
-          onSelectDoctorToBook={handleSelectDoctorToBook}
-          searchFilter={searchFilter}
-        />
+            {/* Doctor & Specialist Directory with Filter Tabs & Cards */}
+            <DoctorDirectory
+              onSelectDoctorToBook={handleSelectDoctorToBook}
+              searchFilter={searchFilter}
+            />
 
-        {/* Telehealth & Remote Care featuring the mandated --glow gradient card */}
-        <TelehealthSection
-          onBookTelehealth={handleOpenGeneralBooking}
-        />
+            {/* Telehealth & Remote Care featuring the mandated --glow gradient card */}
+            <TelehealthSection
+              onBookTelehealth={handleOpenGeneralBooking}
+            />
 
-        {/* Insurance Direct Billing & Coverage matching Figma screenshot */}
-        <InsuranceSection />
+            {/* Insurance Direct Billing & Coverage matching Figma screenshot */}
+            <InsuranceSection />
 
-        {/* Patient & Visitor Guide and Visiting Schedules Table */}
-        <PatientVisitorGuide />
+            {/* Patient & Visitor Guide and Visiting Schedules Table */}
+            <PatientVisitorGuide />
 
-        {/* Patient Portal Screen with Lab Results & Verified Electronic Health Records */}
-        <PatientPortalDemo />
+            {/* Patient Portal Screen with Lab Results & Verified Electronic Health Records */}
+            <PatientPortalDemo />
 
-        {/* Fast Emergency Triage Banner */}
-        <section className="bg-[var(--panel)] border-y border-[var(--line)] py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="space-y-1 text-center md:text-left">
-              <span className="cs-eyebrow font-cardo block">
-                IMMEDIATE RESUSCITATION & CRITICAL CARE
-              </span>
-              <h2 className="cs-h2 font-cardo text-[var(--text)]">
-                24/7 Level 5 Trauma Centre & Ambulance Dispatch
-              </h2>
-              <p className="cs-body text-sm text-[var(--text2)]">
-                Direct ambulance hotline: <strong className="text-[var(--text)]">+254 700 000 911</strong> or <strong className="text-[var(--text)]">+254 20 690 3000</strong>. Upper Hill, Nairobi.
-              </p>
-            </div>
+            {/* Fast Emergency Triage Banner */}
+            <section className="bg-[var(--panel)] border-y border-[var(--line)] py-12 px-4 sm:px-6 lg:px-8">
+              <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="space-y-1 text-center md:text-left">
+                  <span className="cs-eyebrow font-cardo block">
+                    IMMEDIATE RESUSCITATION & CRITICAL CARE
+                  </span>
+                  <h2 className="cs-h2 font-cardo text-[var(--text)]">
+                    24/7 Level 5 Trauma Centre & Ambulance Dispatch
+                  </h2>
+                  <p className="cs-body text-sm text-[var(--text2)]">
+                    Direct ambulance hotline: <strong className="text-[var(--text)]">+254 700 000 911</strong> or <strong className="text-[var(--text)]">+254 20 690 3000</strong>. Upper Hill, Nairobi.
+                  </p>
+                </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={`tel:${HOSPITAL_CONTACTS.emergencyHotline}`}
-                className="min-h-[44px] px-6 py-2.5 bg-[#C8222C] hover:bg-[#a61a22] text-white cs-ui rounded-[6px] transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
-              >
-                <Phone className="w-4 h-4 text-white" />
-                <span>Call Emergency Dispatch</span>
-              </a>
-              <button
-                onClick={handleOpenGeneralBooking}
-                className="min-h-[44px] px-5 py-2.5 border border-[var(--line)] bg-[var(--bg)] text-[var(--text)] hover:bg-[var(--panel)] cs-ui rounded-[6px] transition-colors cursor-pointer"
-              >
-                Book non-urgent visit
-              </button>
-            </div>
-          </div>
-        </section>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href={`tel:${HOSPITAL_CONTACTS.emergencyHotline}`}
+                    className="min-h-[44px] px-6 py-2.5 bg-[#C8222C] hover:bg-[#a61a22] text-white cs-ui rounded-[6px] transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
+                  >
+                    <Phone className="w-4 h-4 text-white" />
+                    <span>Call Emergency Dispatch</span>
+                  </a>
+                  <button
+                    onClick={handleOpenGeneralBooking}
+                    className="min-h-[44px] px-5 py-2.5 border border-[var(--line)] bg-[var(--bg)] text-[var(--text)] hover:bg-[var(--panel)] cs-ui rounded-[6px] transition-colors cursor-pointer"
+                  >
+                    Book non-urgent visit
+                  </button>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
       </main>
 
       {/* Appointment Booking Modal */}

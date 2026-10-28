@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'about', label: 'About Us' },
     { id: 'services', label: 'Clinical Services' },
     { id: 'insurance', label: 'Insurance & Billing' },
-    { id: 'doctors', label: 'Careers' },
+    { id: 'careers', label: 'Careers' },
     { id: 'portal', label: 'Patient Portal' }
   ];
 
