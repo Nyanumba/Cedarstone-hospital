@@ -6,51 +6,30 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { DepartmentGrid } from './components/DepartmentGrid';
-import { DoctorDirectory } from './components/DoctorDirectory';
-import { TelehealthSection } from './components/TelehealthSection';
-import { PatientVisitorGuide } from './components/PatientVisitorGuide';
 import { InsuranceSection } from './components/InsuranceSection';
+import { CentresOfExcellence } from './components/CentresOfExcellence';
+import { InstitutionalDignity } from './components/InstitutionalDignity';
+import { PatientVisitorGuide } from './components/PatientVisitorGuide';
+import { ConsultantDirectory } from './components/ConsultantDirectory';
+import { AboutUs } from './components/AboutUs';
 import { CareersPortal } from './components/CareersPortal';
-import { PatientPortalDemo } from './components/PatientPortalDemo';
-import { AppointmentModal } from './components/AppointmentModal';
 import { Footer } from './components/Footer';
-import { Doctor, Department, AppointmentBooking } from './types';
-import { ShieldAlert, CheckCircle2, Phone, Calendar, ArrowRight } from 'lucide-react';
-import { HOSPITAL_CONTACTS } from './data/hospitalData';
 
 export default function App() {
   const [currentSection, setCurrentSection] = useState<string>('home');
-  const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('light');
-  const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
-  const [bookingDoctor, setBookingDoctor] = useState<Doctor | null>(null);
-  const [bookingDepartment, setBookingDepartment] = useState<Department | null>(null);
-  const [searchFilter, setSearchFilter] = useState<string>('');
-  const [activeToast, setActiveToast] = useState<string | null>(null);
 
-  // Sync theme with system preference and data-theme attribute
+  // Enforce light mode by default permanently
   useEffect(() => {
-    const savedTheme = localStorage.getItem('cs_theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setCurrentTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setCurrentTheme('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      setCurrentTheme('light');
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
+    document.documentElement.setAttribute('data-theme', 'light');
   }, []);
 
-  const handleToggleTheme = () => {
-    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-    setCurrentTheme(nextTheme);
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('cs_theme', nextTheme);
-  };
-
   const handleNavigate = (sectionId: string) => {
+    if (sectionId === 'about') {
+      setCurrentSection('about');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     if (sectionId === 'careers') {
       setCurrentSection('careers');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -63,15 +42,15 @@ export default function App() {
       return;
     }
 
-    // If on careers and clicking a home section (services, insurance, portal, etc.)
-    if (currentSection === 'careers') {
+    // If on about or careers page, switch back to home view first then scroll to target section
+    if (currentSection === 'about' || currentSection === 'careers') {
       setCurrentSection('home');
       setTimeout(() => {
         const el = document.getElementById(sectionId);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 80);
+      }, 100);
       return;
     }
 
@@ -82,152 +61,61 @@ export default function App() {
     }
   };
 
-  const handleOpenGeneralBooking = () => {
-    setBookingDoctor(null);
-    setBookingDepartment(null);
-    setIsBookingOpen(true);
-  };
-
-  const handleSelectDoctorToBook = (doctor: Doctor) => {
-    setBookingDoctor(doctor);
-    setBookingDepartment(null);
-    setIsBookingOpen(true);
-  };
-
-  const handleSelectDepartmentToBook = (department: Department) => {
-    setBookingDepartment(department);
-    setBookingDoctor(null);
-    setIsBookingOpen(true);
-  };
-
-  const handleQuickSearch = (query: string) => {
-    setSearchFilter(query);
-    setCurrentSection('doctors');
-    const el = document.getElementById('doctors');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const handleBookingSuccess = (booking: AppointmentBooking) => {
-    setActiveToast(`Appointment confirmed for ${booking.patientName} with ${booking.doctorName} (Ref: ${booking.id})`);
-    setTimeout(() => setActiveToast(null), 6000);
-  };
-
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] flex flex-col font-atkinson antialiased transition-colors duration-200">
+    <div className="min-h-screen bg-white text-[#1C2430] flex flex-col font-atkinson antialiased">
       
-      {/* Toast Notification */}
-      {activeToast && (
-        <div 
-          className="fixed top-24 right-4 z-50 max-w-md bg-[var(--ok-bg)] border border-[var(--ok)] text-[var(--ok-t)] p-4 rounded-[8px] shadow-lg flex items-start gap-3 animate-in fade-in slide-in-from-top-4"
-          role="status"
-          aria-live="polite"
-        >
-          <CheckCircle2 className="w-5 h-5 text-[var(--ok)] mt-0.5 flex-shrink-0" />
-          <div className="text-xs">
-            <strong className="block font-bold text-sm">Booking Saved</strong>
-            <span>{activeToast}</span>
-          </div>
-        </div>
-      )}
-
-      {/* Main Navbar with Official Logo, Red Emergency Strip & Theme Switcher */}
+      {/* Main Navbar: Official Cedarstone Logo, 95% Width, No Appointment Modal Button */}
       <Navbar
         currentSection={currentSection}
         onNavigate={handleNavigate}
-        onOpenBooking={handleOpenGeneralBooking}
-        currentTheme={currentTheme}
-        onToggleTheme={handleToggleTheme}
       />
 
       <main className="flex-1">
-        {currentSection === 'careers' ? (
+        {currentSection === 'about' ? (
+          /* Dedicated About Us Page matching image_1a3d369a.png, image_9736255f.png, image_515c1c1d.png, image_932e6f77.png */
+          <AboutUs onNavigateToServices={() => handleNavigate('services')} />
+        ) : currentSection === 'careers' ? (
+          /* Dedicated Careers Portal matching image_0b844648.png, image_c38a9e51.png, image_17084871.png, image_861a3084.png, image_4ceb1fda.png */
           <CareersPortal />
         ) : (
+          /* 
+            Strict Home Page Section Sequencing:
+            1. Hero ("World-Class Healthcare Grounded in Compassion")
+            2. Direct Billing and Insurance Section (image_d14d8a9e.png)
+            3. Centre of Excellence (image_d3e4a371.png)
+            4. Institutional Dignity and Care Section (image_77f96661.png)
+            5. Visiting Hours & Clinical Recovery Protocol
+            6. Consultancy Section (image_4b9acc70.png)
+          */
           <>
-            {/* Hero Section with mandated --hero gradient */}
+            {/* 1. Hero Section */}
             <Hero
-              onOpenBooking={handleOpenGeneralBooking}
-              onNavigateToDoctors={() => handleNavigate('doctors')}
               onNavigateToServices={() => handleNavigate('services')}
-              onQuickSearch={handleQuickSearch}
+              onNavigateToVisiting={() => handleNavigate('visitors')}
             />
 
-            {/* Clinical Services & Department Centres of Excellence */}
-            <DepartmentGrid
-              onSelectDepartmentToBook={handleSelectDepartmentToBook}
-            />
-
-            {/* Doctor & Specialist Directory with Filter Tabs & Cards */}
-            <DoctorDirectory
-              onSelectDoctorToBook={handleSelectDoctorToBook}
-              searchFilter={searchFilter}
-            />
-
-            {/* Telehealth & Remote Care featuring the mandated --glow gradient card */}
-            <TelehealthSection
-              onBookTelehealth={handleOpenGeneralBooking}
-            />
-
-            {/* Insurance Direct Billing & Coverage matching Figma screenshot */}
+            {/* 2. Direct Billing & Insurance Section */}
             <InsuranceSection />
 
-            {/* Patient & Visitor Guide and Visiting Schedules Table */}
+            {/* 3. Centres of Excellence */}
+            <CentresOfExcellence />
+
+            {/* 4. Institutional Dignity & Care Section */}
+            <InstitutionalDignity />
+
+            {/* 5. Simplified Visiting Hours & Clinical Recovery Protocol */}
             <PatientVisitorGuide />
 
-            {/* Patient Portal Screen with Lab Results & Verified Electronic Health Records */}
-            <PatientPortalDemo />
-
-            {/* Fast Emergency Triage Banner */}
-            <section className="bg-[var(--panel)] border-y border-[var(--line)] py-12 px-4 sm:px-6 lg:px-8">
-              <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="space-y-1 text-center md:text-left">
-                  <span className="cs-eyebrow font-cardo block">
-                    IMMEDIATE RESUSCITATION & CRITICAL CARE
-                  </span>
-                  <h2 className="cs-h2 font-cardo text-[var(--text)]">
-                    24/7 Level 5 Trauma Centre & Ambulance Dispatch
-                  </h2>
-                  <p className="cs-body text-sm text-[var(--text2)]">
-                    Direct ambulance hotline: <strong className="text-[var(--text)]">+254 700 000 911</strong> or <strong className="text-[var(--text)]">+254 20 690 3000</strong>. Upper Hill, Nairobi.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <a
-                    href={`tel:${HOSPITAL_CONTACTS.emergencyHotline}`}
-                    className="min-h-[44px] px-6 py-2.5 bg-[#C8222C] hover:bg-[#a61a22] text-white cs-ui rounded-[6px] transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
-                  >
-                    <Phone className="w-4 h-4 text-white" />
-                    <span>Call Emergency Dispatch</span>
-                  </a>
-                  <button
-                    onClick={handleOpenGeneralBooking}
-                    className="min-h-[44px] px-5 py-2.5 border border-[var(--line)] bg-[var(--bg)] text-[var(--text)] hover:bg-[var(--panel)] cs-ui rounded-[6px] transition-colors cursor-pointer"
-                  >
-                    Book non-urgent visit
-                  </button>
-                </div>
-              </div>
-            </section>
+            {/* 6. Consultancy / Senior Clinical Leadership Section */}
+            <ConsultantDirectory />
           </>
         )}
       </main>
 
-      {/* Appointment Booking Modal */}
-      <AppointmentModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-        initialDoctor={bookingDoctor}
-        initialDepartment={bookingDepartment}
-        onBookingSuccess={handleBookingSuccess}
-      />
-
-      {/* Comprehensive Footer */}
+      {/* Comprehensive Footer with Defined Dark Gradient */}
       <Footer
         onNavigate={handleNavigate}
-        isDark={currentTheme === 'dark'}
+        isDark={true}
       />
     </div>
   );

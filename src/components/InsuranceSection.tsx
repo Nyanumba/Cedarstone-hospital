@@ -125,7 +125,7 @@ export const InsuranceSection: React.FC = () => {
   });
 
   return (
-    <section id="insurance" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" aria-labelledby="insurance-heading">
+    <section id="insurance" className="py-16 sm:py-20 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto" aria-labelledby="insurance-heading">
       
       {/* Top Header Row with Title on Left and Direct Line Card on Right */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">

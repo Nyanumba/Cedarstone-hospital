@@ -186,7 +186,7 @@ export const CareersPortal: React.FC = () => {
       {/* =========================================================================
           SECTION 1: HERO SECTION matching image_0b844648.png
       ========================================================================= */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[var(--line)]">
+      <section className="py-12 sm:py-16 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto border-b border-[var(--line)]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Headlines & CTA */}
@@ -301,7 +301,7 @@ export const CareersPortal: React.FC = () => {
       {/* =========================================================================
           SECTION 2: FOUNDATIONS OF CLINICAL EXCELLENCE matching image_c38a9e51.png
       ========================================================================= */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[var(--line)]">
+      <section className="py-16 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto border-b border-[var(--line)]">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <div>
             <span className="cs-eyebrow font-cardo block text-xs tracking-[1.4px] mb-2 font-bold text-[#0A4F93] dark:text-[#4C93DB]">
@@ -397,7 +397,7 @@ export const CareersPortal: React.FC = () => {
       {/* =========================================================================
           SECTION 3: MULTIDISCIPLINARY COMMUNITY matching image_17084871.png
       ========================================================================= */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[var(--line)]">
+      <section className="py-16 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto border-b border-[var(--line)]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
           
           {/* Left Column: Heading, Subtitle & Compliance Cards */}
@@ -489,7 +489,7 @@ export const CareersPortal: React.FC = () => {
       {/* =========================================================================
           SECTION 4: OPEN POSITIONS IN UPPER HILL matching image_861a3084.png
       ========================================================================= */}
-      <section id="open-positions" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[var(--line)]">
+      <section id="open-positions" className="py-16 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto border-b border-[var(--line)]">
         
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -677,7 +677,7 @@ export const CareersPortal: React.FC = () => {
       {/* =========================================================================
           SECTION 5: APPLICATION PROTOCOL & TIMELINE matching image_4ceb1fda.png
       ========================================================================= */}
-      <section id="application-protocol" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="application-protocol" className="py-16 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: 4-Step Application Protocol */}

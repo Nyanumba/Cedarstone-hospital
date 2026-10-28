@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import { Calendar, ChevronLeft, ChevronRight, ShieldCheck, Stethoscope, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShieldCheck, Stethoscope, Phone } from 'lucide-react';
 
 interface HeroProps {
-  onOpenBooking: () => void;
-  onNavigateToDoctors: () => void;
   onNavigateToServices: () => void;
-  onQuickSearch?: (query: string) => void;
+  onNavigateToVisiting?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
-  onOpenBooking,
-  onNavigateToDoctors,
-  onNavigateToServices
+  onNavigateToServices,
+  onNavigateToVisiting
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -63,8 +60,8 @@ export const Hero: React.FC<HeroProps> = ({
         aria-hidden="true"
       />
 
-      {/* Hero Content Container */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
+      {/* Hero Content Container using 95% screen width */}
+      <div className="relative z-20 w-[95%] max-w-[1700px] mx-auto px-2 sm:px-4 py-16 sm:py-24">
         <div className="max-w-2xl lg:max-w-3xl space-y-6">
           
           {/* Top Badges matching Figma screenshot */}
@@ -95,25 +92,23 @@ export const Hero: React.FC<HeroProps> = ({
             {activeSlide.lead}
           </p>
 
-          {/* CTA Buttons matching Figma reference */}
+          {/* CTA Buttons - completely removed appointment booking button */}
           <div className="flex flex-wrap items-center gap-4 pt-3">
-            {/* Primary Blue Button with Calendar icon */}
-            <button
-              onClick={onOpenBooking}
-              className="min-h-[46px] px-6 py-3 bg-[#0A4F93] hover:bg-[#083F76] text-white font-semibold text-sm rounded-[6px] transition-all flex items-center gap-2.5 shadow-sm border border-blue-400/30 cursor-pointer"
-            >
-              <Calendar className="w-4 h-4 text-white" aria-hidden="true" />
-              <span>Book an Appointment</span>
-            </button>
-
-            {/* Outline Button with Clinical Specialties icon */}
             <button
               onClick={onNavigateToServices}
-              className="min-h-[46px] px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-sm rounded-[6px] border border-white/40 transition-all flex items-center gap-2.5 backdrop-blur-xs cursor-pointer"
+              className="min-h-[46px] px-6 py-3 bg-[#0A4F93] hover:bg-[#083F76] text-white font-semibold text-sm rounded-[6px] transition-all flex items-center gap-2.5 shadow-sm border border-blue-400/30 cursor-pointer"
             >
               <Stethoscope className="w-4 h-4 text-white" aria-hidden="true" />
               <span>Explore Clinical Specialties</span>
             </button>
+
+            <a
+              href="tel:+254208900000"
+              className="min-h-[46px] px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-sm rounded-[6px] border border-white/40 transition-all flex items-center gap-2.5 backdrop-blur-xs"
+            >
+              <Phone className="w-4 h-4 text-white" aria-hidden="true" />
+              <span>24/7 Hotline: +254 (0) 20 890 0000</span>
+            </a>
           </div>
 
         </div>
