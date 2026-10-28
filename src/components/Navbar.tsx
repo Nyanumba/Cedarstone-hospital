@@ -1,25 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
-  Phone, 
   Calendar, 
-  Clock, 
   Menu, 
   X, 
   Sun, 
   Moon, 
   ShieldAlert, 
-  UserCheck, 
-  ChevronDown, 
-  MapPin, 
-  Stethoscope, 
-  HeartPulse, 
-  CreditCard, 
-  FileText, 
-  Video, 
-  Building2 
+  Phone
 } from 'lucide-react';
 import { CedarstoneLogo } from './CedarstoneLogo';
-import { HOSPITAL_CONTACTS } from '../data/hospitalData';
 
 interface NavbarProps {
   currentSection: string;
@@ -37,82 +26,59 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleTheme
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [patientDropdownOpen, setPatientDropdownOpen] = useState(false);
-  const servicesDropdownRef = useRef<HTMLDivElement>(null);
-  const patientDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdowns on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
-        setServicesDropdownOpen(false);
-      }
-      if (patientDropdownRef.current && !patientDropdownRef.current.contains(event.target as Node)) {
-        setPatientDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  const navLinks = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About Us' },
+    { id: 'services', label: 'Clinical Services' },
+    { id: 'insurance', label: 'Insurance & Billing' },
+    { id: 'doctors', label: 'Careers' },
+    { id: 'portal', label: 'Patient Portal' }
+  ];
 
   const handleNavClick = (sectionId: string) => {
     onNavigate(sectionId);
     setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
-    setPatientDropdownOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[var(--bg)] border-b border-[var(--line)] shadow-xs transition-colors duration-200">
+    <header className="sticky top-0 z-50 w-full bg-white dark:bg-[#141B26] border-b border-[var(--line)] shadow-xs transition-colors duration-200">
       {/* 
-        Mandated Emergency Strip:
-        "The solid red emergency strip ('Emergency care, open 24 hours') appears once per page. 
-        Emergency #C8222C with white text in both modes."
+        Emergency Top Bar matching Figma reference:
+        "EMERGENCY CARE • OPEN 24 HOURS | Rapid Response & Ambulance: +254 (0) 20 890 0000 / 0711 000 999 • Upper Hill, Nairobi"
       */}
       <div 
-        className="w-full bg-[#C8222C] text-white py-1.5 px-4 text-xs font-medium tracking-wide flex items-center justify-between"
+        className="w-full bg-[#C8222C] text-white py-1.5 px-4 text-xs font-semibold tracking-wide"
         role="region"
-        aria-label="Cedarstone 24-Hour Emergency Bar"
+        aria-label="Cedarstone Emergency Bar"
       >
-        <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-4">
-          <div className="flex items-center gap-2">
-            <span className="flex h-2.5 w-2.5 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+        <div className="max-w-7xl mx-auto flex items-center justify-center text-center">
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-[11px] sm:text-[12.5px]">
+            <span className="font-bold uppercase tracking-wider">
+              EMERGENCY CARE • OPEN 24 HOURS
             </span>
-            <span className="font-bold uppercase tracking-wider text-[12px] sm:text-[13px]">
-              Emergency care, open 24 hours
-            </span>
-            <span className="hidden md:inline text-white/80">· Upper Hill, Hospital Road, Nairobi</span>
-          </div>
-
-          <div className="flex items-center gap-4 text-xs">
+            <span className="hidden sm:inline opacity-70">|</span>
             <a 
-              href={`tel:${HOSPITAL_CONTACTS.emergencyHotline}`}
-              className="inline-flex items-center gap-1.5 font-bold hover:underline py-0.5 px-2 rounded focus-visible:outline-white"
-              aria-label={`Call emergency hotline ${HOSPITAL_CONTACTS.emergencyHotline}`}
+              href="tel:+254208900000" 
+              className="hover:underline font-medium inline-flex items-center gap-1"
             >
-              <Phone className="w-3.5 h-3.5 text-white" aria-hidden="true" />
-              <span>Emergency Hotline: {HOSPITAL_CONTACTS.emergencyHotline}</span>
+              Rapid Response & Ambulance: +254 (0) 20 890 0000 / 0711 000 999
             </a>
-            <span className="hidden sm:inline text-white/60">|</span>
-            <span className="hidden sm:inline text-white/90">Ambulance: {HOSPITAL_CONTACTS.ambulanceDispatch}</span>
-            <span className="hidden lg:inline text-white/60">|</span>
-            <span className="hidden lg:inline text-white/90">M-PESA Paybill: {HOSPITAL_CONTACTS.mpesaPaybill}</span>
+            <span className="hidden md:inline opacity-70">•</span>
+            <span className="hidden md:inline text-white/90">Upper Hill, Nairobi</span>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar Bar */}
+      {/* Main Navbar Bar matching Figma screenshot */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Hospital Navigation">
-        <div className="flex items-center justify-between h-20 gap-3">
+        <div className="flex items-center justify-between h-20 gap-4">
           
-          {/* Brand Wordmark & Official SVG Logo */}
+          {/* Official Cedarstone Logo on the Left */}
           <div className="flex-shrink-0 flex items-center">
             <button
               onClick={() => handleNavClick('home')}
-              className="flex items-center gap-2 text-left focus-visible:outline-2 focus-visible:outline-[var(--focus)] rounded-[6px] p-1 cursor-pointer"
+              className="flex items-center gap-2 text-left focus-visible:outline-2 focus-visible:outline-[#0A4F93] rounded-[6px] p-1 cursor-pointer"
               aria-label="Cedarstone Hospital Home"
             >
               <CedarstoneLogo 
@@ -124,177 +90,29 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-            
-            {/* Services Dropdown */}
-            <div className="relative" ref={servicesDropdownRef}>
-              <button
-                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Escape') setServicesDropdownOpen(false);
-                }}
-                className={`cs-ui min-h-[44px] px-3 py-2 flex items-center gap-1 transition-colors cursor-pointer rounded-[6px] ${
-                  currentSection === 'services' || servicesDropdownOpen
-                    ? 'text-[var(--blue)] font-bold' 
-                    : 'text-[var(--text)] hover:text-[var(--blue)] font-normal'
-                }`}
-                aria-expanded={servicesDropdownOpen}
-                aria-haspopup="true"
-              >
-                <span>Services & Clinics</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-150 ${servicesDropdownOpen ? 'rotate-180 text-[var(--blue)]' : 'text-[var(--text2)]'}`} />
-              </button>
-
-              {servicesDropdownOpen && (
-                <div 
-                  className="absolute left-0 mt-1 w-72 bg-[var(--bg)] border border-[var(--line)] rounded-[8px] p-2 shadow-lg z-50 animate-in fade-in slide-in-from-top-2"
-                  role="menu"
+            {navLinks.map((link) => {
+              const isActive = currentSection === link.id;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
+                  className={`cs-ui min-h-[40px] px-3.5 py-2 rounded-lg transition-colors cursor-pointer text-sm font-medium ${
+                    isActive
+                      ? 'bg-[#EEF4FA] dark:bg-[#1C2430] text-[#0A4F93] dark:text-[#4C93DB] font-bold shadow-xs'
+                      : 'text-[#1C2430] dark:text-[#EAF0F7] hover:text-[#0A4F93] dark:hover:text-[#4C93DB] hover:bg-slate-50 dark:hover:bg-[#1C2430]/50'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
                 >
-                  <button
-                    onClick={() => handleNavClick('services')}
-                    className="w-full text-left px-3 py-2.5 text-xs font-bold text-[var(--blue)] hover:bg-[var(--panel)] rounded-[6px] flex items-center justify-between cursor-pointer border-b border-[var(--line)] mb-1"
-                    role="menuitem"
-                  >
-                    <span>View All 8 Clinical Departments</span>
-                    <span>→</span>
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('services')}
-                    className="w-full text-left px-3 py-2 text-xs text-[var(--text)] hover:bg-[var(--panel)] rounded-[6px] flex items-center gap-2 cursor-pointer"
-                    role="menuitem"
-                  >
-                    <ShieldAlert className="w-4 h-4 text-[#C8222C]" />
-                    <span>24/7 Level 5 Trauma Centre</span>
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('services')}
-                    className="w-full text-left px-3 py-2 text-xs text-[var(--text)] hover:bg-[var(--panel)] rounded-[6px] flex items-center gap-2 cursor-pointer"
-                    role="menuitem"
-                  >
-                    <HeartPulse className="w-4 h-4 text-[var(--blue)]" />
-                    <span>Heart & Vascular Institute</span>
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('services')}
-                    className="w-full text-left px-3 py-2 text-xs text-[var(--text)] hover:bg-[var(--panel)] rounded-[6px] flex items-center gap-2 cursor-pointer"
-                    role="menuitem"
-                  >
-                    <Stethoscope className="w-4 h-4 text-[var(--blue)]" />
-                    <span>Mother & Child Pavilion (Maternity)</span>
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('services')}
-                    className="w-full text-left px-3 py-2 text-xs text-[var(--text)] hover:bg-[var(--panel)] rounded-[6px] flex items-center gap-2 cursor-pointer"
-                    role="menuitem"
-                  >
-                    <Building2 className="w-4 h-4 text-[var(--blue)]" />
-                    <span>3T MRI & 128-Slice CT Radiology</span>
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Find a Doctor */}
-            <button
-              onClick={() => handleNavClick('doctors')}
-              className={`cs-ui min-h-[44px] px-3 py-2 transition-colors relative cursor-pointer text-left rounded-[6px] ${
-                currentSection === 'doctors' 
-                  ? 'text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:text-[var(--blue)] font-normal'
-              }`}
-            >
-              Find a Doctor
-              {currentSection === 'doctors' && (
-                <span className="absolute bottom-1.5 left-3 right-3 h-0.5 bg-[var(--blue)]" />
-              )}
-            </button>
-
-            {/* Virtual Care (Telehealth) */}
-            <button
-              onClick={() => handleNavClick('telehealth')}
-              className={`cs-ui min-h-[44px] px-3 py-2 transition-colors relative cursor-pointer text-left rounded-[6px] flex items-center gap-1.5 ${
-                currentSection === 'telehealth' 
-                  ? 'text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:text-[var(--blue)] font-normal'
-              }`}
-            >
-              <Video className="w-4 h-4 text-[var(--blue)]" />
-              <span>Virtual Care</span>
-              {currentSection === 'telehealth' && (
-                <span className="absolute bottom-1.5 left-3 right-3 h-0.5 bg-[var(--blue)]" />
-              )}
-            </button>
-
-            {/* Patient & Visitors Dropdown */}
-            <div className="relative" ref={patientDropdownRef}>
-              <button
-                onClick={() => setPatientDropdownOpen(!patientDropdownOpen)}
-                className={`cs-ui min-h-[44px] px-3 py-2 flex items-center gap-1 transition-colors cursor-pointer rounded-[6px] ${
-                  currentSection === 'visitors' || currentSection === 'insurance' || patientDropdownOpen
-                    ? 'text-[var(--blue)] font-bold' 
-                    : 'text-[var(--text)] hover:text-[var(--blue)] font-normal'
-                }`}
-                aria-expanded={patientDropdownOpen}
-                aria-haspopup="true"
-              >
-                <span>Patient & Visitors</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-150 ${patientDropdownOpen ? 'rotate-180 text-[var(--blue)]' : 'text-[var(--text2)]'}`} />
-              </button>
-
-              {patientDropdownOpen && (
-                <div 
-                  className="absolute left-0 mt-1 w-64 bg-[var(--bg)] border border-[var(--line)] rounded-[8px] p-2 shadow-lg z-50 animate-in fade-in slide-in-from-top-2"
-                  role="menu"
-                >
-                  <button
-                    onClick={() => handleNavClick('visitors')}
-                    className="w-full text-left px-3 py-2 text-xs text-[var(--text)] hover:bg-[var(--panel)] rounded-[6px] flex items-center gap-2 cursor-pointer"
-                    role="menuitem"
-                  >
-                    <Clock className="w-4 h-4 text-[var(--blue)]" />
-                    <span>Inpatient Visiting Hours</span>
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('insurance')}
-                    className="w-full text-left px-3 py-2 text-xs text-[var(--text)] hover:bg-[var(--panel)] rounded-[6px] flex items-center gap-2 cursor-pointer"
-                    role="menuitem"
-                  >
-                    <CreditCard className="w-4 h-4 text-[var(--blue)]" />
-                    <span>Insurance (SHA / NHIF) & Costs</span>
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('visitors')}
-                    className="w-full text-left px-3 py-2 text-xs text-[var(--text)] hover:bg-[var(--panel)] rounded-[6px] flex items-center gap-2 cursor-pointer"
-                    role="menuitem"
-                  >
-                    <FileText className="w-4 h-4 text-[var(--blue)]" />
-                    <span>Hospital Admission Checklist</span>
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Patient Portal */}
-            <button
-              onClick={() => handleNavClick('portal')}
-              className={`cs-ui min-h-[44px] px-3 py-2 transition-colors relative cursor-pointer text-left rounded-[6px] flex items-center gap-1.5 ${
-                currentSection === 'portal' 
-                  ? 'text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:text-[var(--blue)] font-normal'
-              }`}
-            >
-              <UserCheck className="w-4 h-4 text-[var(--blue)]" />
-              <span>Patient Portal</span>
-              {currentSection === 'portal' && (
-                <span className="absolute bottom-1.5 left-3 right-3 h-0.5 bg-[var(--blue)]" />
-              )}
-            </button>
-
+                  {link.label}
+                </button>
+              );
+            })}
           </div>
 
           {/* Right Header Navbar Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             
-            {/* Theme Toggle Button (44px min touch target) */}
+            {/* Theme Toggle Button */}
             <button
               onClick={onToggleTheme}
               className="min-h-[44px] min-w-[44px] p-2.5 rounded-[6px] border border-[var(--line)] text-[var(--text)] hover:bg-[var(--panel)] transition-colors flex items-center justify-center cursor-pointer"
@@ -302,19 +120,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               title={`Switch to ${currentTheme === 'light' ? 'dark' : 'light'} mode`}
             >
               {currentTheme === 'light' ? (
-                <Moon className="w-5 h-5 text-[var(--text2)]" aria-hidden="true" />
+                <Moon className="w-4 h-4 text-[var(--text2)]" aria-hidden="true" />
               ) : (
-                <Sun className="w-5 h-5 text-amber-400" aria-hidden="true" />
+                <Sun className="w-4 h-4 text-amber-400" aria-hidden="true" />
               )}
             </button>
 
-            {/* Primary Action Button (Atkinson bold 16, verb-first, min height 44px) */}
+            {/* Primary Action Button: "Book an Appointment" matching screenshot in Cedar blue */}
             <button
               onClick={onOpenBooking}
-              className="hidden sm:inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 bg-[var(--btn)] hover:bg-[var(--btn-h)] text-white cs-ui rounded-[6px] transition-colors shadow-sm cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 bg-[#0A4F93] hover:bg-[#083F76] text-white cs-ui text-sm font-semibold rounded-[6px] transition-colors shadow-sm cursor-pointer"
             >
               <Calendar className="w-4 h-4" aria-hidden="true" />
-              <span>Book an appointment</span>
+              <span>Book an Appointment</span>
             </button>
 
             {/* Mobile Hamburger Toggle Button */}
@@ -338,107 +156,44 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div 
-          className="lg:hidden bg-[var(--bg)] border-b border-[var(--line)] px-4 pt-3 pb-6 space-y-4 shadow-lg animate-in fade-in"
+          className="lg:hidden bg-white dark:bg-[#141B26] border-b border-[var(--line)] px-4 pt-3 pb-6 space-y-3 shadow-lg"
           role="dialog"
           aria-label="Mobile Navigation Drawer"
         >
           <div className="flex flex-col space-y-1">
-            <button
-              onClick={() => handleNavClick('home')}
-              className={`min-h-[44px] w-full text-left px-3 py-2.5 rounded-[6px] cs-ui transition-colors ${
-                currentSection === 'home' 
-                  ? 'bg-[var(--panel)] text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:bg-[var(--panel)]'
-              }`}
-            >
-              Home
-            </button>
-
-            <button
-              onClick={() => handleNavClick('services')}
-              className={`min-h-[44px] w-full text-left px-3 py-2.5 rounded-[6px] cs-ui transition-colors ${
-                currentSection === 'services' 
-                  ? 'bg-[var(--panel)] text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:bg-[var(--panel)]'
-              }`}
-            >
-              Services & Clinics (8 Departments)
-            </button>
-
-            <button
-              onClick={() => handleNavClick('doctors')}
-              className={`min-h-[44px] w-full text-left px-3 py-2.5 rounded-[6px] cs-ui transition-colors ${
-                currentSection === 'doctors' 
-                  ? 'bg-[var(--panel)] text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:bg-[var(--panel)]'
-              }`}
-            >
-              Find a Doctor & Specialists
-            </button>
-
-            <button
-              onClick={() => handleNavClick('telehealth')}
-              className={`min-h-[44px] w-full text-left px-3 py-2.5 rounded-[6px] cs-ui transition-colors ${
-                currentSection === 'telehealth' 
-                  ? 'bg-[var(--panel)] text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:bg-[var(--panel)]'
-              }`}
-            >
-              Virtual Care (Telehealth)
-            </button>
-
-            <button
-              onClick={() => handleNavClick('visitors')}
-              className={`min-h-[44px] w-full text-left px-3 py-2.5 rounded-[6px] cs-ui transition-colors ${
-                currentSection === 'visitors' 
-                  ? 'bg-[var(--panel)] text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:bg-[var(--panel)]'
-              }`}
-            >
-              Patient & Visiting Schedules
-            </button>
-
-            <button
-              onClick={() => handleNavClick('insurance')}
-              className={`min-h-[44px] w-full text-left px-3 py-2.5 rounded-[6px] cs-ui transition-colors ${
-                currentSection === 'insurance' 
-                  ? 'bg-[var(--panel)] text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:bg-[var(--panel)]'
-              }`}
-            >
-              Insurance (SHA / NHIF) & Settlement
-            </button>
-
-            <button
-              onClick={() => handleNavClick('portal')}
-              className={`min-h-[44px] w-full text-left px-3 py-2.5 rounded-[6px] cs-ui transition-colors ${
-                currentSection === 'portal' 
-                  ? 'bg-[var(--panel)] text-[var(--blue)] font-bold' 
-                  : 'text-[var(--text)] hover:bg-[var(--panel)]'
-              }`}
-            >
-              Patient Health Records Portal
-            </button>
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className={`min-h-[44px] w-full text-left px-3.5 py-2.5 rounded-lg cs-ui text-sm transition-colors ${
+                  currentSection === link.id
+                    ? 'bg-[#EEF4FA] dark:bg-[#1C2430] text-[#0A4F93] dark:text-[#4C93DB] font-bold'
+                    : 'text-[#1C2430] dark:text-[#EAF0F7] hover:bg-slate-50 dark:hover:bg-[#1C2430]'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
           </div>
 
-          <div className="pt-3 border-t border-[var(--line)] flex flex-col gap-2.5">
+          <div className="pt-3 border-t border-[var(--line)] flex flex-col gap-2">
             <button
               onClick={() => {
                 onOpenBooking();
                 setMobileMenuOpen(false);
               }}
-              className="w-full min-h-[44px] px-4 py-2.5 bg-[var(--btn)] hover:bg-[var(--btn-h)] text-white cs-ui rounded-[6px] flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+              className="w-full min-h-[44px] px-4 py-2.5 bg-[#0A4F93] hover:bg-[#083F76] text-white cs-ui text-sm font-semibold rounded-[6px] flex items-center justify-center gap-2 cursor-pointer shadow-sm"
             >
               <Calendar className="w-4 h-4" aria-hidden="true" />
-              <span>Book an appointment</span>
+              <span>Book an Appointment</span>
             </button>
 
             <a
-              href={`tel:${HOSPITAL_CONTACTS.emergencyHotline}`}
-              className="w-full min-h-[44px] px-4 py-2.5 border border-[#C8222C] text-[#C8222C] dark:text-[#F0707A] hover:bg-[#FBECEC] dark:hover:bg-[#3A1519] cs-ui rounded-[6px] flex items-center justify-center gap-2"
+              href="tel:+254208900000"
+              className="w-full min-h-[44px] px-4 py-2.5 border border-[#C8222C] text-[#C8222C] dark:text-[#F0707A] hover:bg-[#FBECEC] dark:hover:bg-[#3A1519] cs-ui text-sm font-medium rounded-[6px] flex items-center justify-center gap-2"
             >
               <ShieldAlert className="w-4 h-4" aria-hidden="true" />
-              <span>Emergency (+254 700 000 911)</span>
+              <span>Emergency (+254 20 890 0000)</span>
             </a>
           </div>
         </div>
