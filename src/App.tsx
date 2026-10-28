@@ -10,6 +10,7 @@ import { DepartmentGrid } from './components/DepartmentGrid';
 import { DoctorDirectory } from './components/DoctorDirectory';
 import { TelehealthSection } from './components/TelehealthSection';
 import { PatientVisitorGuide } from './components/PatientVisitorGuide';
+import { InsuranceSection } from './components/InsuranceSection';
 import { PatientPortalDemo } from './components/PatientPortalDemo';
 import { AppointmentModal } from './components/AppointmentModal';
 import { Footer } from './components/Footer';
@@ -144,7 +145,10 @@ export default function App() {
           onBookTelehealth={handleOpenGeneralBooking}
         />
 
-        {/* Patient & Visitor Guide, Visiting Schedules Table & Insurance Checker */}
+        {/* Insurance Direct Billing & Coverage matching Figma screenshot */}
+        <InsuranceSection />
+
+        {/* Patient & Visitor Guide and Visiting Schedules Table */}
         <PatientVisitorGuide />
 
         {/* Patient Portal Screen with Lab Results & Verified Electronic Health Records */}
