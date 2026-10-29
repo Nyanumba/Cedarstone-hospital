@@ -1,0 +1,95 @@
+You need 17 photos + 1 official logo SVG in total for the complete website (plus 3 optional vector .svg hero alternatives):
+Page	Number of Photos	Description
+All Pages (Header & Footer)	1 SVG	Official Cedarstone Hospital Logo
+Home Page	6 Photos	3 Hero Carousel Slides + 3 Consultant Leadership Portraits
+About Us Page	10 Photos	1 Flagship Hero + 4 Executive Directorate + 5 Clinical Architecture Suites
+Careers Portal	3 Photos	1 Mentorship Feature + 2 Unit Photos (Biomedical & ICU Nursing)
+Total	17 Photos + 1 Logo	(All saved in public/images/)
+Complete Photo Directory, File Names & Code Locations
+Place all these files inside your project's public/images/ directory:
+code
+Text
+your-project/
+└── public/
+    └── images/
+        ├── cedarstone-logo.svg          <-- Hospital Logo
+        │
+        │── [ HOME PAGE ]
+        ├── hero-slide-1.jpg             <-- Hero Slide 1 (Kenyan doctors)
+        ├── hero-slide-2.jpg             <-- Hero Slide 2 (Cath Lab / Surgery)
+        ├── hero-slide-3.jpg             <-- Hero Slide 3 (Maternity & NICU)
+        ├── dr-daniel-otieno.jpg         <-- Chief of Cardiology
+        ├── dr-grace-chebet.jpg          <-- Director of Paediatrics
+        ├── prof-joseph-ndegwa.jpg       <-- Head of Orthopaedic Surgery
+        │
+        │── [ ABOUT US PAGE ]
+        ├── about-flagship.jpg           <-- Upper Hill Flagship Center
+        ├── dr-peter-kamau.jpg           <-- Executive: Dr. Peter Kamau
+        ├── dr-amina-wanjiru.jpg         <-- Executive: Dr. Amina Wanjiru
+        ├── grace-chebet.jpg             <-- Executive: Grace Chebet
+        ├── brian-wafula.jpg             <-- Executive: Brian Wafula
+        ├── facility-theatre.jpg         <-- 6 Modular Surgical Suites
+        ├── facility-private-suite.jpg   <-- Private Inpatient Suites
+        ├── facility-pediatric-nicu.jpg  <-- Dedicated Pediatric Wing & NICU
+        ├── facility-gardens.jpg         <-- Healing Recovery Gardens
+        ├── facility-helipad.jpg         <-- Trauma Helipad & Fleet Bay
+        │
+        └── [ CAREERS PORTAL ]
+            ├── careers-mentorship.jpg   <-- Mentorship Hero
+            ├── careers-biomedical.jpg   <-- Biomedical Engineering Unit
+            └── careers-nursing.jpg      <-- Critical Care Nursing Council
+Where Each Photo Is Referenced in the Code
+1. Official Logo
+Code File: src/components/CedarstoneLogo.tsx
+Line 18:
+code
+Tsx
+<img src="/images/cedarstone-logo.svg" alt="Cedarstone Hospital Logo" />
+2. Home Page Hero Carousel
+Code File: src/components/Hero.tsx
+Lines 31, 41, 51:
+code
+Tsx
+jpgImage: '/images/hero-slide-1.jpg', // Slide 1
+jpgImage: '/images/hero-slide-2.jpg', // Slide 2
+jpgImage: '/images/hero-slide-3.jpg', // Slide 3
+3. Home Page Consultant Leadership
+Code File: src/components/ConsultantDirectory.tsx
+Lines 14, 22, 30:
+code
+Tsx
+image: '/images/dr-daniel-otieno.jpg',   // Dr. Daniel Otieno
+image: '/images/dr-grace-chebet.jpg',    // Dr. Grace Chebet
+image: '/images/prof-joseph-ndegwa.jpg', // Prof. Joseph Ndegwa
+4. About Us Page
+Code File: src/components/AboutUs.tsx
+Line 89 (Flagship Hero):
+code
+Tsx
+<img src="/images/about-flagship.jpg" alt="Upper Hill Flagship Medical Center" />
+Lines 293, 316, 339, 362 (Executive Directorate):
+code
+Tsx
+<img src="/images/dr-peter-kamau.jpg" />
+<img src="/images/dr-amina-wanjiru.jpg" />
+<img src="/images/grace-chebet.jpg" />
+<img src="/images/brian-wafula.jpg" />
+Lines 546, 574, 613, 642, 671 (Clinical Architecture):
+code
+Tsx
+<img src="/images/facility-theatre.jpg" />        // Modular Surgical Suites
+<img src="/images/facility-private-suite.jpg" />  // Private Inpatient Suites
+<img src="/images/facility-pediatric-nicu.jpg" /> // Pediatric Wing & NICU
+<img src="/images/facility-gardens.jpg" />        // Recovery Gardens
+<img src="/images/facility-helipad.jpg" />        // Trauma Helipad & Fleet Bay
+5. Careers Portal
+Code File: src/components/CareersPortal.tsx
+Line 268 (Mentorship Feature):
+code
+Tsx
+<img src="/images/careers-mentorship.jpg" alt="Mentoring clinical nurse" />
+Lines 452, 479 (Biomedical & Nursing Units):
+code
+Tsx
+<img src="/images/careers-biomedical.jpg" alt="Biomedical Engineering Unit" />
+<img src="/images/careers-nursing.jpg" alt="Critical Care Nursing Council" />

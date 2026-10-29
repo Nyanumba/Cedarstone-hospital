@@ -13,7 +13,12 @@ import {
   Download, 
   ArrowRight,
   Activity,
-  HeartHandshake
+  HeartHandshake,
+  MapPin,
+  Compass,
+  ChevronRight,
+  Phone,
+  Navigation
 } from 'lucide-react';
 
 interface AboutUsProps {
@@ -86,7 +91,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           <div className="lg:col-span-5">
             <div className="relative rounded-[16px] overflow-hidden shadow-lg border border-[#D5DEE8] bg-[#141B26]">
               <img
-                src="/src/assets/images/about_nurse_leader_1793212872337.jpg"
+                src="/images/about-flagship.jpg"
                 alt="Chief Nursing Officer at Cedarstone Hospital overlooking Nairobi Upper Hill"
                 className="w-full h-[460px] object-cover object-top"
               />
@@ -290,7 +295,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           <article className="bg-white border border-[#D5DEE8] rounded-[12px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors">
             <div className="relative h-64 bg-slate-100 overflow-hidden">
               <img
-                src="/src/assets/images/dr_peter_kamau_1793212892435.jpg"
+                src="/images/dr-peter-kamau.jpg"
                 alt="Dr. Peter Kamau, Consultant Physician at Cedarstone Hospital"
                 className="w-full h-full object-cover object-top"
               />
@@ -312,7 +317,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           <article className="bg-white border border-[#D5DEE8] rounded-[12px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors">
             <div className="relative h-64 bg-slate-100 overflow-hidden">
               <img
-                src="/src/assets/images/dr_amina_wanjiru_1793212911159.jpg"
+                src="/images/dr-amina-wanjiru.jpg"
                 alt="Dr. Amina Wanjiru, Chief of Maternal and Fetal Care"
                 className="w-full h-full object-cover object-top"
               />
@@ -334,7 +339,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           <article className="bg-white border border-[#D5DEE8] rounded-[12px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors">
             <div className="relative h-64 bg-slate-100 overflow-hidden">
               <img
-                src="/src/assets/images/grace_chebet_1793212933647.jpg"
+                src="/images/grace-chebet.jpg"
                 alt="Grace Chebet, Director of Nursing Services"
                 className="w-full h-full object-cover object-top"
               />
@@ -356,7 +361,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           <article className="bg-white border border-[#D5DEE8] rounded-[12px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors">
             <div className="relative h-64 bg-slate-100 overflow-hidden">
               <img
-                src="/src/assets/images/brian_wafula_1793212952130.jpg"
+                src="/images/brian-wafula.jpg"
                 alt="Brian Wafula, Chief Operating Officer and Governance Lead"
                 className="w-full h-full object-cover object-top"
               />
@@ -512,6 +517,222 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           </div>
 
         </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 5: PURPOSE-BUILT CLINICAL ARCHITECTURE matching image_55de7822.png, image_5c9c254d.png, image_c39fabcb.png
+      ========================================================================= */}
+      <section className="py-16 sm:py-20 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto border-t border-[#D5DEE8]" aria-labelledby="architecture-heading">
+        
+        {/* Header with Title on Left and Location on Right */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <h2 id="architecture-heading" className="cs-h1 font-cardo text-3xl sm:text-4xl lg:text-[42px] text-[#0B2545] font-normal">
+            Purpose-Built Clinical Architecture
+          </h2>
+          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#1C2430]">
+            <MapPin className="w-4 h-4 text-[#C8222C] flex-shrink-0" />
+            <span>Ralphe Bunche Rd, Upper Hill, Nairobi</span>
+          </div>
+        </div>
+
+        {/* 2-Row Grid matching screenshots */}
+        <div className="space-y-6 mb-12">
+          
+          {/* Top Row: Large Modular Surgical Suite (Left) + Private Inpatient Suites (Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            {/* Card 1: 6 Ultra-Clean Modular Surgical Suites (7 cols) */}
+            <article className="lg:col-span-7 rounded-[16px] overflow-hidden border border-[#D5DEE8] relative shadow-xs flex flex-col justify-end min-h-[420px] bg-slate-900 group">
+              <img 
+                src="/images/facility-theatre.jpg" 
+                alt="6 Ultra-Clean Modular Surgical Suites at Cedarstone Hospital"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+              />
+              <div 
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(180deg, rgba(7,38,72,0.1) 0%, rgba(7,38,72,0.6) 45%, rgba(7,38,72,0.96) 100%)'
+                }}
+              />
+              <div className="relative z-10 p-7 sm:p-9 text-white space-y-2">
+                <span className="text-[11px] font-bold tracking-[1.4px] uppercase text-[#BFD9F5] block">
+                  TIER-1 SURGICAL CAPABILITY
+                </span>
+                <h3 className="cs-h3 font-cardo text-2xl sm:text-3xl font-bold text-white">
+                  6 Ultra-Clean Modular Surgical Suites
+                </h3>
+                <p className="cs-body text-xs sm:text-sm text-[#DCE9F7] max-w-xl leading-relaxed">
+                  Equipped with HEPA positive pressure airflow, laparoscopic digital towers, and continuous intra-operative ultrasound imaging.
+                </p>
+              </div>
+            </article>
+
+            {/* Card 2: Private Inpatient Suites (5 cols) */}
+            <article className="lg:col-span-5 bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors flex flex-col justify-between">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+                <img 
+                  src="/images/facility-private-suite.jpg" 
+                  alt="Private Inpatient Suites at Cedarstone Hospital"
+                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 sm:p-7 space-y-3 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="cs-h3 font-cardo text-xl sm:text-2xl font-bold text-[#1C2430] mb-2">
+                    Private Inpatient Suites
+                  </h3>
+                  <p className="cs-body text-xs sm:text-sm text-[#4A5B6E] leading-relaxed">
+                    Designed for restorative tranquility with acoustic isolation, personal en-suite facilities, and continuous oxygen telemetry.
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <button 
+                    onClick={() => alert("Private Inpatient Suite Amenities: En-suite rainfall shower, remote motorized bed, private nurse call tablet, dedicated family recliner, complimentary high-speed Wi-Fi, and personalized chef meals.")}
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0A4F93] hover:underline cursor-pointer"
+                  >
+                    <span>View room amenities</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          {/* Bottom Row: 3 Equal Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {/* Card 3: Dedicated Pediatric Wing & NICU */}
+            <article className="bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors flex flex-col justify-between">
+              <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
+                <img 
+                  src="/images/facility-pediatric-nicu.jpg" 
+                  alt="Dedicated Pediatric Wing & NICU at Cedarstone Hospital"
+                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="cs-h3 font-cardo text-xl font-bold text-[#1C2430] mb-2">
+                    Dedicated Pediatric Wing & NICU
+                  </h3>
+                  <p className="cs-body text-xs text-[#4A5B6E] leading-relaxed">
+                    A child-centered sanctuary staffed 24/7 by pediatric intensivists, advanced neonatal incubators, and family lodgings.
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <button 
+                    onClick={() => alert("Pediatric Safety Protocol: Bio-secure electronic tag monitoring for newborns, 1:1 neonatal nurse ratio, family-integrated developmental care, and HEPA laminar air in NICU bays.")}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A4F93] hover:underline cursor-pointer"
+                  >
+                    <span>Pediatric safety protocol</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            {/* Card 4: Healing Recovery Gardens */}
+            <article className="bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors flex flex-col justify-between">
+              <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
+                <img 
+                  src="/images/facility-gardens.jpg" 
+                  alt="Healing Recovery Gardens at Cedarstone Hospital"
+                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="cs-h3 font-cardo text-xl font-bold text-[#1C2430] mb-2">
+                    Healing Recovery Gardens
+                  </h3>
+                  <p className="cs-body text-xs text-[#4A5B6E] leading-relaxed">
+                    Therapeutic outdoor green spaces with indigenous indigenous Kenyan flora designed to accelerate psychological and cardiac convalescence.
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <button 
+                    onClick={() => alert("Convalescent Services: Physiotherapy guided outdoor walking circuits, sensory relaxation benches, sunshine-assisted recovery, and wheelchair-accessible therapeutic pathways.")}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A4F93] hover:underline cursor-pointer"
+                  >
+                    <span>Convalescent services</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            {/* Card 5: Trauma Helipad & Fleet Bay */}
+            <article className="bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#C8222C] transition-colors flex flex-col justify-between">
+              <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
+                <img 
+                  src="/images/facility-helipad.jpg" 
+                  alt="Trauma Helipad & Fleet Bay at Cedarstone Hospital"
+                  className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="cs-h3 font-cardo text-xl font-bold text-[#1C2430] mb-2">
+                    Trauma Helipad & Fleet Bay
+                  </h3>
+                  <p className="cs-body text-xs text-[#4A5B6E] leading-relaxed">
+                    Direct rooftop aero-medical evacuation landing pad and 4 dedicated Level 3 mobile intensive care ambulances.
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <a 
+                    href="tel:+254208900000"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8222C] hover:underline"
+                  >
+                    <span>Emergency dispatch</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+
+        {/* Bottom Callout Banner matching image_c39fabcb.png */}
+        <div className="bg-[#EEF4FA] border border-[#D5DEE8] rounded-[16px] p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs">
+          <div className="flex items-start sm:items-center gap-4 text-left">
+            <div className="w-12 h-12 rounded-[12px] bg-white border border-[#D5DEE8] flex items-center justify-center text-[#0A4F93] flex-shrink-0 shadow-xs">
+              <Navigation className="w-6 h-6 text-[#0A4F93]" />
+            </div>
+            <div>
+              <h3 className="cs-h3 font-cardo text-lg sm:text-xl font-bold text-[#1C2430]">
+                Planning an Inpatient Visit or Consultation?
+              </h3>
+              <p className="cs-body text-xs sm:text-sm text-[#4A5B6E] mt-0.5">
+                Secure patient parking on-site. Visiting hours are 12:30 PM – 2:00 PM and 4:30 PM – 6:30 PM daily.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+            <a
+              href="tel:+254208900000"
+              className="min-h-[44px] px-6 py-2.5 bg-[#0A4F93] hover:bg-[#083F76] text-white font-bold text-xs sm:text-sm rounded-[8px] transition-colors shadow-xs flex items-center justify-center gap-2 flex-1 sm:flex-initial"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Admissions (+254 20 890 0000)</span>
+            </a>
+
+            <a
+              href="https://maps.google.com/?q=Upper+Hill+Nairobi+Kenya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-[44px] px-5 py-2.5 bg-white hover:bg-slate-50 border border-[#D5DEE8] text-[#1C2430] font-bold text-xs sm:text-sm rounded-[8px] transition-colors flex items-center justify-center gap-2 flex-1 sm:flex-initial"
+            >
+              <Compass className="w-4 h-4 text-[#0A4F93]" />
+              <span>Directions via Google Maps</span>
+            </a>
+          </div>
+        </div>
+
       </section>
 
     </div>
