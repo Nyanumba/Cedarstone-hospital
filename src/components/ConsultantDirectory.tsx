@@ -11,7 +11,7 @@ export const ConsultantDirectory: React.FC = () => {
       specialty: 'Cardiac Sciences & Cath Lab',
       name: 'Dr. Daniel Otieno',
       qualifications: 'MBChB, MMed (Int Med), FACC, FSCAI',
-      image: '/src/assets/images/dr_daniel_otieno_cathlab_1793214283753.jpg'
+      image: '/images/daniel-otieno.jpg',   // Dr. Daniel Otieno
     },
     {
       id: 'dr-chebet',
@@ -19,7 +19,7 @@ export const ConsultantDirectory: React.FC = () => {
       specialty: 'Pediatric Centre & Neonatology',
       name: 'Dr. Grace Chebet',
       qualifications: 'MBChB, MMed (Paed), Fellow Neonatology',
-      image: '/src/assets/images/dr_grace_chebet_pediatrics_1793214340414.jpg'
+      image: '/images/grace-chebet.jpg',   // Dr. Grace Chebet
     },
     {
       id: 'prof-ndegwa',
@@ -27,7 +27,7 @@ export const ConsultantDirectory: React.FC = () => {
       specialty: 'Trauma & Orthopaedic Sciences',
       name: 'Prof. Joseph Ndegwa',
       qualifications: 'MBChB, MMed (Surg), FCS (ECSA), FRCS',
-      image: '/src/assets/images/prof_joseph_ndegwa_ortho_1793214355569.jpg'
+      image: '/images/joseph-ndegwa.jpg',   // Prof. Joseph Ndegwa
     }
   ];
 

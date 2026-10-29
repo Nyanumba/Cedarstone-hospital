@@ -265,7 +265,7 @@ export const CareersPortal: React.FC = () => {
             <div className="relative rounded-[16px] overflow-hidden shadow-lg border border-[#D5DEE8] dark:border-[#2C3748] bg-[#141B26]">
               {/* Kenyan Doctors Mentorship Image */}
               <img
-                src="/src/assets/images/careers_mentorship_1793211066248.jpg"
+                src="/images/female-doctor.jpg"
                 alt="Dr. Achieng Omondi mentoring clinical nurse at Cedarstone Hospital reception"
                 className="w-full h-[400px] object-cover object-top"
               />
@@ -396,12 +396,15 @@ export const CareersPortal: React.FC = () => {
 
       {/* =========================================================================
           SECTION 3: MULTIDISCIPLINARY COMMUNITY matching image_17084871.png
+          UPDATED: both image columns now share the same width (col-span-3),
+          sit at the same level (image on top, caption below) and use the
+          same image height (h-64).
       ========================================================================= */}
       <section className="py-16 px-2 sm:px-4 w-[95%] max-w-[1700px] mx-auto border-b border-[var(--line)]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
           
           {/* Left Column: Heading, Subtitle & Compliance Cards */}
-          <div className="lg:col-span-5 space-y-5">
+          <div className="lg:col-span-6 space-y-5">
             <span className="cs-eyebrow font-cardo block text-xs tracking-[1.4px] font-bold text-[#0A4F93] dark:text-[#4C93DB]">
               MULTIDISCIPLINARY COMMUNITY
             </span>
@@ -445,13 +448,13 @@ export const CareersPortal: React.FC = () => {
             </div>
           </div>
 
-          {/* Center Column: Biomedical Engineering Unit */}
-          <div className="lg:col-span-4 space-y-3">
+          {/* Center Column: Biomedical Engineering Unit (image on top, caption below) */}
+          <div className="lg:col-span-3 space-y-3">
             <div className="rounded-[12px] overflow-hidden border border-[#D5DEE8] dark:border-[#2C3748] shadow-xs bg-slate-100 dark:bg-[#1C2430]">
               <img
-                src="/src/assets/images/biomedical_engineering_1793211085101.jpg"
+                src="/images/biomedical-unit.jpg"
                 alt="Kenyan biomedical engineer testing ICU monitor at Cedarstone Hospital"
-                className="w-full h-56 object-cover"
+                className="w-full h-64 object-cover"
               />
             </div>
             <div>
@@ -464,8 +467,15 @@ export const CareersPortal: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Critical Care Nursing Council */}
+          {/* Right Column: Critical Care Nursing Council (image on top, caption below) */}
           <div className="lg:col-span-3 space-y-3">
+            <div className="rounded-[12px] overflow-hidden border border-[#D5DEE8] dark:border-[#2C3748] shadow-xs bg-slate-100 dark:bg-[#1C2430]">
+              <img
+                src="/images/critical-care-nursing-council.jpg"
+                alt="Two Kenyan critical care registered nurses reviewing charts at central nursing station"
+                className="w-full h-64 object-cover"
+              />
+            </div>
             <div>
               <h3 className="font-bold text-sm text-[#0A4F93] dark:text-[#4C93DB]">
                 Critical Care Nursing Council
@@ -473,13 +483,6 @@ export const CareersPortal: React.FC = () => {
               <p className="text-xs text-[#4A5B6E] dark:text-[#A9B6C6] mt-1 leading-relaxed">
                 Nurse-led rounds, evidence-based sepsis protocols, and supportive clinical nurse educator mentorship.
               </p>
-            </div>
-            <div className="rounded-[12px] overflow-hidden border border-[#D5DEE8] dark:border-[#2C3748] shadow-xs bg-slate-100 dark:bg-[#1C2430]">
-              <img
-                src="/src/assets/images/critical_care_nurses_1793211103943.jpg"
-                alt="Two Kenyan critical care registered nurses reviewing charts at central nursing station"
-                className="w-full h-56 object-cover"
-              />
             </div>
           </div>
 

@@ -91,7 +91,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           <div className="lg:col-span-5">
             <div className="relative rounded-[16px] overflow-hidden shadow-lg border border-[#D5DEE8] bg-[#141B26]">
               <img
-                src="/images/about-flagship.jpg"
+                src="/images/upperhill-flagship.jpg"
                 alt="Chief Nursing Officer at Cedarstone Hospital overlooking Nairobi Upper Hill"
                 className="w-full h-[460px] object-cover object-top"
               />
@@ -361,7 +361,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
           <article className="bg-white border border-[#D5DEE8] rounded-[12px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors">
             <div className="relative h-64 bg-slate-100 overflow-hidden">
               <img
-                src="/images/brian-wafula.jpg"
+                src="/images/dr-brian-wafula.jpg"
                 alt="Brian Wafula, Chief Operating Officer and Governance Lead"
                 className="w-full h-full object-cover object-top"
               />
@@ -544,7 +544,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
             {/* Card 1: 6 Ultra-Clean Modular Surgical Suites (7 cols) */}
             <article className="lg:col-span-7 rounded-[16px] overflow-hidden border border-[#D5DEE8] relative shadow-xs flex flex-col justify-end min-h-[420px] bg-slate-900 group">
               <img 
-                src="/images/facility-theatre.jpg" 
+                src="/images/surgical-suites.jpg" 
                 alt="6 Ultra-Clean Modular Surgical Suites at Cedarstone Hospital"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
               />
@@ -571,7 +571,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
             <article className="lg:col-span-5 bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors flex flex-col justify-between">
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
                 <img 
-                  src="/images/facility-private-suite.jpg" 
+                  src="/images/private-inpatient.jpg" 
                   alt="Private Inpatient Suites at Cedarstone Hospital"
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
                 />
@@ -606,7 +606,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
             <article className="bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors flex flex-col justify-between">
               <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
                 <img 
-                  src="/images/facility-pediatric-nicu.jpg" 
+                  src="/images/NICU-baby.jpg" 
                   alt="Dedicated Pediatric Wing & NICU at Cedarstone Hospital"
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
                 />
@@ -636,7 +636,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
             <article className="bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#0A4F93] transition-colors flex flex-col justify-between">
               <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
                 <img 
-                  src="/images/facility-gardens.jpg" 
+                  src="/images/healing-recovery-garden.jpg" 
                   alt="Healing Recovery Gardens at Cedarstone Hospital"
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
                 />
@@ -666,7 +666,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigateToServices }) => {
             <article className="bg-white border border-[#D5DEE8] rounded-[16px] overflow-hidden shadow-xs hover:border-[#C8222C] transition-colors flex flex-col justify-between">
               <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
                 <img 
-                  src="/images/facility-helipad.jpg" 
+                  src="/images/landing-helipad.jpg" 
                   alt="Trauma Helipad & Fleet Bay at Cedarstone Hospital"
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
                 />

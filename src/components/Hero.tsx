@@ -44,7 +44,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/src/assets/images/kenyan_hospital_doctors_1793209361844.jpg')`,
+          backgroundImage: `url('/images/hero-slide-1.jpg')`,
           backgroundPosition: 'right 20% center'
         }}
         aria-hidden="true"
