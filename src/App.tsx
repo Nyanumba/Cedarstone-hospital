@@ -18,9 +18,12 @@ import { Footer } from './components/Footer';
 export default function App() {
   const [currentSection, setCurrentSection] = useState<string>('home');
 
-  // Enforce light mode by default permanently
+  // Enforce light mode permanently irrespective of user OS or browser theme settings
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('light');
+    document.documentElement.classList.remove('dark');
+    document.documentElement.style.colorScheme = 'light';
   }, []);
 
   const handleNavigate = (sectionId: string) => {
