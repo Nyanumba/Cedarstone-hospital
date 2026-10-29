@@ -1,6 +1,6 @@
 @import "tailwindcss";
-
 :root {
+  color-scheme: light !important;
   --blue: #0A4F93;
   --btn: #0A4F93;
   --btn-h: #083F76;
@@ -27,75 +27,11 @@
   --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --blue: #4C93DB;
-    --btn: #2F78C4;
-    --btn-h: #2568AB;
-    --red: #F0707A;
-    --emergency: #C8222C;
-    --text: #EAF0F7;
-    --text2: #A9B6C6;
-    --bg: #141B26;
-    --panel: #1C2430;
-    --line: #2C3748;
-    --ok: #6FD3B1;
-    --ok-t: #6FD3B1;
-    --ok-bg: #16342B;
-    --warn: #F2C46B;
-    --warn-bg: #3A2C0F;
-    --red-bg: #3A1519;
-    --focus: #4C93DB;
-    --shadow-menu: none;
-  }
-}
-
-[data-theme="dark"] {
-  --blue: #4C93DB;
-  --btn: #2F78C4;
-  --btn-h: #2568AB;
-  --red: #F0707A;
-  --emergency: #C8222C;
-  --text: #EAF0F7;
-  --text2: #A9B6C6;
-  --bg: #141B26;
-  --panel: #1C2430;
-  --line: #2C3748;
-  --ok: #6FD3B1;
-  --ok-t: #6FD3B1;
-  --ok-bg: #16342B;
-  --warn: #F2C46B;
-  --warn-bg: #3A2C0F;
-  --red-bg: #3A1519;
-  --focus: #4C93DB;
-  --shadow-menu: none;
-}
-
-[data-theme="light"] {
-  --blue: #0A4F93;
-  --btn: #0A4F93;
-  --btn-h: #083F76;
-  --red: #C8222C;
-  --emergency: #C8222C;
-  --text: #1C2430;
-  --text2: #4A5B6E;
-  --bg: #FFFFFF;
-  --panel: #EEF4FA;
-  --line: #D5DEE8;
-  --ok: #1E7A5F;
-  --ok-t: #145540;
-  --ok-bg: #E1F2EB;
-  --warn: #8A5A00;
-  --warn-bg: #FFF4DB;
-  --red-bg: #FBECEC;
-  --focus: #0A4F93;
-  --shadow-menu: 0 4px 16px rgba(18,38,63,.12);
-}
-
 html {
+  color-scheme: light !important;
   font-family: var(--font-body);
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: #FFFFFF !important;
+  color: #1C2430 !important;
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -103,8 +39,9 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--bg);
-  color: var(--text);
+  color-scheme: light !important;
+  background-color: #FFFFFF !important;
+  color: #1C2430 !important;
   font-family: var(--font-body);
   min-height: 100vh;
 }
