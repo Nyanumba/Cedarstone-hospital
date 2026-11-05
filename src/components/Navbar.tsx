@@ -19,12 +19,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Us' },
+    // { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
     { id: 'insurance', label: 'Insurance & Billing' },
-    { id: 'services', label: 'Centres of Excellence' },
-    { id: 'visitors', label: 'Visiting Hours' },
-    { id: 'consultants', label: 'Senior Leadership' },
+    { id: 'services', label: 'Services' },
+    { id: 'visitors', label: 'Visiting' },
+    // { id: 'consultants', label: 'Senior Leadership' },
     { id: 'careers', label: 'Careers' }
   ];
 
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div 
-          className="lg:hidden bg-white border-b border-[#D5DEE8] px-4 pt-3 pb-6 space-y-3 shadow-lg"
+          className="lg:hidden absolute right-0 bg-white border-b border-[#D5DEE8] px-4 pt-3 pb-6 space-y-3 shadow-lg"
           role="dialog"
           aria-label="Mobile Navigation Drawer"
         >
